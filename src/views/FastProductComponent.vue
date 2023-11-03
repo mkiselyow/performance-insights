@@ -1,10 +1,10 @@
 <template>
   <section class="product">
-    <main v-if="productData">
-      <img class="product__img" :alt="productData.title" :src="productData.images[0]">
+    <main v-if="$store.state.productData">
+      <img class="product__img" :alt="$store.state.productData.title" :src="$store.state.productData.images[0]">
       <div class="product__wrapper">
-        <h1 class="product__title">{{ productData.title }} | {{ productData.price }}$</h1>
-        <p class="product__description">{{ productData.description }}</p>
+        <h1 class="product__title">{{ $store.state.productData.title }} | {{ $store.state.productData.price }}$</h1>
+        <p class="product__description">{{ $store.state.productData.description }}</p>
       </div>
     </main>
     <div class="product__loader" v-else>
@@ -14,17 +14,15 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
-  name: 'ProductComponent',
+  name: 'FastProductComponent',
   data () {
+    console.log(_) // lodash is just to simulate as if this component were big size
     return {
-      productData: null
+      key: _
     }
-  },
-  async created () {
-    // eslint-disable-next-line no-unused-vars
-    const response = await fetch(`https://dummyjson.com/products/${this.$route.params.id}`)
-    this.productData = await response.json()
   }
 }
 </script>

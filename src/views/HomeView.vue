@@ -4,9 +4,16 @@
     <router-link
       v-for="product in productsArray"
       :key="product.id"
-      :to="`/product/${product.id}`"
+      :to="`/fast-product/${product.id}`"
     >
-      {{ product.title }} | {{ product.price }}$
+      [Fast] {{ product.title }} | {{ product.price }}$
+    </router-link>
+    <router-link
+      v-for="product in productsArray"
+      :key="product.id"
+      :to="`/slow-product/${product.id}`"
+    >
+      [Slow] {{ product.title }} | {{ product.price }}$
     </router-link>
   </div>
 </template>
